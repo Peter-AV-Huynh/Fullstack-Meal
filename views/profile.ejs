@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+    <title>Meal Tracker</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <% if(lines === undefined){lines = ""} %>
+<div class="container">
+
+    <div class="page-header text-center">
+        <h1>Daily Meal Tracker</h1>
+        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+        <a href="/profile" class="btn btn-default btn-sm deleteAll">Reset (Next Day)</a>
+    </div>
+
+    <div class="row">
+
+        <!-- LOCAL INFORMATION -->
+        <div class="col-sm-6">
+          <div class="lines">
+          <% for(var i=0; i<lines.length; i++) {%>
+              <p class="storyLine"><%= lines[i].line %><span class="author"> (<%= lines[i].name %>)</span></p>
+          <% } %>
+          </div>
+
+          <h3>What did you eat today?</h3>
+        <% if (user.local.email) { %>
+          <form action="/postLine" method="POST">
+            <input type="text" placeholder="Time" name="name">
+            <input type="text" placeholder="Meal" name="line">
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+        <% } %>
+
+</div>
+
+<script src="main.js"></script>
+
+</body>
+</html>
